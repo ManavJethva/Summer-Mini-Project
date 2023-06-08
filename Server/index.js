@@ -2,7 +2,10 @@ import express from "express"
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
-
+import appointmentroutes from './routes/appointmentroutes';
+import patientroutes from './routes/patientsroutes';
+import prescriptionroutes from './routes/prescriptionroutes';
+import authroutes from './routes/authroutes';
 
 const app=express();
 dotenv.config();
@@ -32,8 +35,16 @@ app.use(cors(),( err,req,res,next)=>{
       stack: err.stack
     })
   })
-
   app.use(express.json())
+
+  const router =express.Router();
+  app.use("/",router)
+  app.use("/api/auth",authroutes)
+  app.use("/api/patientRecords",patientroutes);
+  app.use("/api/appointment",appointmentroutes);
+  app.use("/api/prescriptions",prescriptionroutes);
+
+  
 
   app.listen(3001,(req,res)=>{
     connect()
