@@ -45,7 +45,7 @@ const Navbar = ({ menuItems }) => {
             className="block md:hidden cursor-pointer"
             onClick={handleMobileMenuToggle}
           >
-            {/* <svg
+            <svg
               className="w-6 h-6"
               fill="none"
               strokeLinecap="round"
@@ -59,7 +59,7 @@ const Navbar = ({ menuItems }) => {
               ) : (
                 <ion-icon name="close-outline"></ion-icon>
               )}
-            </svg> */}
+            </svg>
           </div>
           <div className="hidden md:flex">
             <div className="md:mx-4 ">
