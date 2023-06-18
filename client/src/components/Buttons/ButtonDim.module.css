@@ -1,0 +1,27 @@
+/* Button styles */
+.btn {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-family:poppins;
+
+  }
+  
+  .btn:hover {
+    background-color: rgb(153, 189, 221);
+    color:black;
+  }
+  
+  .btn:focus {
+    outline: none;
+  }
+  
+  .btn:active {
+    background-color: #003080;
+    color: white;
+  }
+  
