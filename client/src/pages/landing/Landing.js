@@ -53,14 +53,17 @@ const Landing = () => {
                   Digitalize Your Health
                 </h1>
               </div>
-              <div className="md:text-md text-sm">
+              <div className="md:text-md text-sm font-serif">
                 <p>
                   Elixir is a powerful tool designed to help educational
                   institutions manage the health records of their students,
                   employees, and residents.
                 </p>
               </div>
-              <div className={`mt-4 p-6 ` }>
+
+
+              <div className="mt-4 py-6">
+
                 <ButtonPurple>Book Appointment</ButtonPurple>
               </div>
             </div>
