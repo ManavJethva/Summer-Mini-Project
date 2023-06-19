@@ -55,7 +55,7 @@ const Landing = () => {
                 </h1>
               </div>
               <div className="md:text-md text-sm font-serif">
-                <p>
+                <p className="pr-20">
                   Elixir is a powerful tool designed to help educational
                   institutions manage the health records of their students,
                   employees, and residents.
@@ -80,7 +80,7 @@ const Landing = () => {
             <h2 className="text-3xl text-colorbgbutton font-bold p-4">
               OUR SERVICES
             </h2>
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-slate-600 font-serif px-20">
               Simplify patient management, streamline appointments, and optimize
               prescription processes. Enhance efficiency, accuracy, and patient
               care with our comprehensive software. Experience seamless
@@ -120,7 +120,7 @@ const Landing = () => {
                 <p>website@iiitm.ac.in</p>
               </div>
             </div>
-            <div className="mr-10 p-2">
+            <div className="mr-5 p-2">
               <img className='md:h-[15rem] md:w-[15rem] shadow-2xl mb-8' src={iiitmLogo} alt="iiitmLogo" />
             </div>
           </div>
