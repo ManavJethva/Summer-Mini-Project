@@ -28,12 +28,12 @@ const Navbar = ({ menuItems }) => {
             isMobileMenuOpen ? "block" : "hidden"
           } md:block md:ml-4`}
         >
-            <ul className="flex space-x-4">
+            <ul className="flex space-x-4 md:ml-[20px]">
               {menuItems.map((item) => (
                 <li key={item.id}>
                   <Link
                     to={item.path}
-                    className="text-gray-800 hover:text-gray-600"
+                    className="text-gray-800 hover:text-gray-600 md:px-6"
                   >
                     {item.title}
                   </Link>

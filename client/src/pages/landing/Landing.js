@@ -42,7 +42,7 @@ const Landing = () => {
     <div>
       <Navbar menuItems={menuItems} />
 
-      <section id="/" className="bg-colorbghero">
+      <section id="/" className={`bg-colorbghero rounded-br-[5rem] `}>
         <div className="flex items-center pt-6 justify-end">
           <div>
             <div className="flex-1 px-8">
@@ -103,12 +103,12 @@ const Landing = () => {
       <section id="/contact">
         <div className="bg-colorcontact">
           <h2 className="text-3xl text-colorbgbutton text-center font-bold p-8">
-            CONTACTS US
+            CONTACT US
           </h2>
 
           <div className="flex items-center justify-cent p-4">
             <div>
-              <div className="font-bold px-8 pr-[4rem]">
+              <div className="font-bold text-slate-600 px-8 pr-[5rem]">
                 <p>
                   ABV-Indian Institute of Information Technology and Management
                   Gwalior (ABV-IIITM), Morena Link Road, Gwalior, Madhya
