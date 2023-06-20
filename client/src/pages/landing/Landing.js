@@ -9,6 +9,7 @@ import prescriptionIcon from "../../assets/images/prescription_favicon.png";
 import ServiceCard from "../../components/ServiceCard/ServiceCard";
 import iiitmLogo from "../../assets/images/iiitmLogo.jpeg";
 import mailbox from "../../assets/images/mailbox_favicon.png"
+
 const Landing = () => {
   const menuItems = [
     { id: 1, title: "Home", path: "/" },

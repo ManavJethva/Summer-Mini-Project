@@ -1,13 +1,13 @@
 import React from 'react';
 
 
-function PatientRecord() {
+function Register() {
     return (
         <div>
-           PatientRecord   
+           Register   
         </div>
     );
   }
   
-  export default PatientRecord;
+  export default Register;
   

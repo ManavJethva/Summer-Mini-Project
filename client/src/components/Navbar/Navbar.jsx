@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import ButtonBlack from "../Buttons/ButtonBlack";
 import ButtonPurple from "../Buttons/ButtonPurple";
 
 const Navbar = ({ menuItems }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const navigate= useNavigate();
   const handleMobileMenuToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -15,6 +15,12 @@ const Navbar = ({ menuItems }) => {
   if (!menuItems || !Array.isArray(menuItems)) {
     // Handle case where menuItems prop is missing or not an array
     return <div>No menu items provided.</div>;
+  }
+  const handleClicklogin=()=>{
+    navigate("/login");
+  }
+  const handleClickRegister=()=>{
+    navigate("/register");
   }
 
   return (
@@ -63,10 +69,10 @@ const Navbar = ({ menuItems }) => {
           </div>
           <div className="hidden md:flex">
             <div className="md:mx-4 ">
-              <ButtonBlack>Login</ButtonBlack>
+              <ButtonBlack onClick={handleClicklogin}>Login</ButtonBlack>
             </div>
             <div>
-              <ButtonPurple>Signup</ButtonPurple>
+              <ButtonPurple onClick={handleClickRegister}>Signup</ButtonPurple>
             </div>
           </div>
         </div>
