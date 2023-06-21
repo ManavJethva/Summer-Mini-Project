@@ -7,72 +7,61 @@ import ButtonPurple from "../Buttons/ButtonPurple";
 
 const Navbar = ({ menuItems }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const navigate= useNavigate();
-  const handleMobileMenuToggle = () => {
+  const navigate = useNavigate();
+
+  const handleMobileMenuToggle = (sectionId) => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+
+    const element = document.getElementById(sectionId);
+
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
-  if (!menuItems || !Array.isArray(menuItems)) {
-    // Handle case where menuItems prop is missing or not an array
-    return <div>No menu items provided.</div>;
-  }
-  const handleClicklogin=()=>{
+  const handleClickLogin = () => {
     navigate("/login");
-  }
-  const handleClickRegister=()=>{
+  };
+
+  const handleClickRegister = () => {
     navigate("/register");
-  }
+  };
 
   return (
-    <nav className="py-4 px-6 bg-colorbghero">
-      <div className="flex items-center justify-between">
-        <div className={`text-lg font-bold ${styles.logo}`}>
-          <h1 className="">Elixir</h1>
-        </div>
+    <nav className="flex items-center justify-between py-4 px-6 bg-colorbghero">
+      <div className={`text-lg font-bold ${styles.logo}`}>
+        <h1 className="">Elixir</h1>
+      </div>
+
+      <div className="md:flex items-center">
+        <ul className="flex md:ml-[20px]">
+          {menuItems.map((item) => (
+            <li className="mr-2" key={item.id}>
+              <button
+                onClick={() => handleMobileMenuToggle(item.id)}
+                className="text-gray-800 hover:text-gray-600 md:px-6"
+              >
+                {item.title}
+              </button>
+            </li>
+          ))}
+        </ul>
+
         <div
-          className={`${
-            isMobileMenuOpen ? "block" : "hidden"
-          } md:block md:ml-4`}
-        >
-          <ul className="flex space-x-4 md:ml-[20px]">
-            {menuItems.map((item) => (
-              <li key={item.id}>
-                <Link
-                  to={item.path}
-                  className="text-gray-800 hover:text-gray-600 md:px-6"
-                >
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div
-          className="block md:hidden cursor-pointer"
+          className="block cursor-pointer"
           onClick={handleMobileMenuToggle}
-        >
-          {isMobileMenuOpen ? (
-            <ion-icon name="menu-outline"></ion-icon>
-          ) : (
-            <ion-icon name="menu-outline"></ion-icon>
-          )}
-        </div>
-        <div className="hidden md:flex">
-          <div className="md:mx-4 ">
-            <ButtonBlack>Login</ButtonBlack>
+        ></div>
+
+        <div className="md:flex float-right">
+          <div className="md:mx-4 md:mt-0 mt-2 ml-1">
+            <ButtonBlack onClick={handleClickLogin}>
+              Login
+            </ButtonBlack>
           </div>
-<<<<<<< HEAD
-          <div>
-            <ButtonPurple>Signup</ButtonPurple>
-=======
-          <div className="hidden md:flex">
-            <div className="md:mx-4 ">
-              <ButtonBlack onClick={handleClicklogin}>Login</ButtonBlack>
-            </div>
-            <div>
-              <ButtonPurple onClick={handleClickRegister}>Signup</ButtonPurple>
-            </div>
->>>>>>> 289f0345ec52fa3444855c5f45a80aa56d789c7a
+          <div className="mt-3 md:mt-0">
+            <ButtonPurple onClick={handleClickRegister}>
+              Signup
+            </ButtonPurple>
           </div>
         </div>
       </div>
