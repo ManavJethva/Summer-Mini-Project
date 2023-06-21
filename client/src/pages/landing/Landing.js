@@ -61,7 +61,10 @@ const Landing = () => {
                   employees, and residents.
                 </p>
               </div>
+
+
               <div className="mt-4 py-6">
+
                 <ButtonPurple>Book Appointment</ButtonPurple>
               </div>
             </div>

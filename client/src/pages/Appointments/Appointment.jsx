@@ -1,13 +1,13 @@
 import React from 'react';
 
 
-function PatientRecord() {
+function Appointment() {
     return (
         <div>
-           PatientRecord   
+           Appointment   
         </div>
     );
   }
   
-  export default PatientRecord;
+  export default Appointment;
   
