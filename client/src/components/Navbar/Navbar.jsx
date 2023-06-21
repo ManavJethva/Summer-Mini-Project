@@ -28,48 +28,38 @@ const Navbar = ({ menuItems }) => {
             isMobileMenuOpen ? "block" : "hidden"
           } md:block md:ml-4`}
         >
-            <ul className="flex space-x-4 md:ml-[20px]">
-              {menuItems.map((item) => (
-                <li key={item.id}>
-                  <Link
-                    to={item.path}
-                    className="text-gray-800 hover:text-gray-600 md:px-6"
-                  >
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <ul className="flex space-x-4 md:ml-[20px]">
+            {menuItems.map((item) => (
+              <li key={item.id}>
+                <Link
+                  to={item.path}
+                  className="text-gray-800 hover:text-gray-600 md:px-6"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div
+          className="block md:hidden cursor-pointer"
+          onClick={handleMobileMenuToggle}
+        >
+          {isMobileMenuOpen ? (
+            <ion-icon name="menu-outline"></ion-icon>
+          ) : (
+            <ion-icon name="menu-outline"></ion-icon>
+          )}
+        </div>
+        <div className="hidden md:flex">
+          <div className="md:mx-4 ">
+            <ButtonBlack>Login</ButtonBlack>
           </div>
-          <div
-            className="block md:hidden cursor-pointer"
-            onClick={handleMobileMenuToggle}
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {isMobileMenuOpen ? (
-                <ion-icon name="menu-outline"></ion-icon>
-              ) : (
-                <ion-icon name="close-outline"></ion-icon>
-              )}
-            </svg>
-          </div>
-          <div className="hidden md:flex">
-            <div className="md:mx-4 ">
-              <ButtonBlack>Login</ButtonBlack>
-            </div>
-            <div>
-              <ButtonPurple>Signup</ButtonPurple>
-            </div>
+          <div>
+            <ButtonPurple>Signup</ButtonPurple>
           </div>
         </div>
+      </div>
     </nav>
   );
 };

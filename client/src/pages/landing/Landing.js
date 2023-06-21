@@ -108,7 +108,7 @@ const Landing = () => {
 
           <div className="flex items-center justify-cent p-4">
             <div>
-              <div className="font-bold text-slate-600 px-8 pr-[5rem]">
+              <div className="font-bold text-slate-600 px-8 md:pr-[20rem]">
                 <p>
                   ABV-Indian Institute of Information Technology and Management
                   Gwalior (ABV-IIITM), Morena Link Road, Gwalior, Madhya
