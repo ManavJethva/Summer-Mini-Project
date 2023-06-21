@@ -42,7 +42,7 @@ const Landing = () => {
     <div>
       <Navbar menuItems={menuItems} />
 
-      <section id="home" className={`bg-colorbghero rounded-br-[5rem] `}>
+      <section id="home" className={`bg-gradient-to-r from-purple-300 to-slate-300 rounded-br-[5rem] `}>
         <div className="flex items-center pt-6 justify-end">
           <div>
             <div className="flex-1 px-8">
@@ -50,7 +50,7 @@ const Landing = () => {
                 <h4 className="font-bold text-sm">EMBRACE A HEALTHY JOURNEY</h4>
               </div>
               <div>
-                <h1 className="text-2xl md:text-4xl font-semibold text-colorbgbutton my-3">
+                <h1 className="text-4xl font-extrabold text-colorbgbutton my-3">
                   Digitalize Your Health
                 </h1>
               </div>
@@ -102,7 +102,7 @@ const Landing = () => {
       </section>
 
       <section id="contact">
-        <div className="bg-colorcontact">
+        <div className='bg-colorbghero'>
           <h2 className="text-3xl text-colorbgbutton text-center font-bold p-8">
             CONTACT US
           </h2>

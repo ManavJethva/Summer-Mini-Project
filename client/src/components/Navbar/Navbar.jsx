@@ -28,7 +28,7 @@ const Navbar = ({ menuItems }) => {
   };
 
   return (
-    <nav className="flex items-center justify-between py-4 px-6 bg-colorbghero">
+    <nav className="flex items-center justify-between py-4 px-6 bg-gradient-to-r from-purple-300 to-slate-300">
       <div className={`text-lg font-bold ${styles.logo}`}>
         <h1 className="">Elixir</h1>
       </div>
