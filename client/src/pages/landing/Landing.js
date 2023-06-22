@@ -9,6 +9,7 @@ import prescriptionIcon from "../../assets/images/prescription_favicon.png";
 import ServiceCard from "../../components/ServiceCard/ServiceCard";
 import iiitmLogo from "../../assets/images/iiitmLogo.jpeg";
 import mailbox from "../../assets/images/mailbox_favicon.png"
+import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
   const menuItems = [
@@ -16,6 +17,10 @@ const Landing = () => {
     { id: 2, title: "Services", path: "/services" },
     { id: 3, title: "Contact", path: "/contact" },
   ];
+  const navigate=useNavigate();
+  const handleclick=() =>{
+    navigate('/login')
+  }
 
   const services = [
     {
@@ -65,7 +70,7 @@ const Landing = () => {
 
               <div className="mt-4 py-6">
 
-                <ButtonPurple>Book Appointment</ButtonPurple>
+                <ButtonPurple onClick={handleclick}>Book Appointment</ButtonPurple>
               </div>
             </div>
           </div>
