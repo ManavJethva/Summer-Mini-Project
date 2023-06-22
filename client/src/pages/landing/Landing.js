@@ -11,11 +11,13 @@ import iiitmLogo from "../../assets/images/iiitmLogo.jpeg";
 import mailbox from "../../assets/images/mailbox_favicon.png"
 import { useNavigate } from "react-router-dom";
 
+
+
 const Landing = () => {
   const menuItems = [
-    { id: 1, title: "Home", path: "/" },
-    { id: 2, title: "Services", path: "/services" },
-    { id: 3, title: "Contact", path: "/contact" },
+    { id: "home", title: "Home" },
+    { id: "services", title: "Services" },
+    { id: "contact", title: "Contact" },
   ];
   const navigate=useNavigate();
   const handleclick=() =>{
@@ -47,7 +49,7 @@ const Landing = () => {
     <div>
       <Navbar menuItems={menuItems} />
 
-      <section id="/" className={`bg-colorbghero rounded-br-[5rem] `}>
+      <section id="home" className={`bg-gradient-to-r from-purple-300 to-slate-300 rounded-br-[5rem] `}>
         <div className="flex items-center pt-6 justify-end">
           <div>
             <div className="flex-1 px-8">
@@ -55,22 +57,23 @@ const Landing = () => {
                 <h4 className="font-bold text-sm">EMBRACE A HEALTHY JOURNEY</h4>
               </div>
               <div>
-                <h1 className="text-2xl md:text-4xl font-semibold text-colorbgbutton my-3">
+                <h1 className="text-4xl font-extrabold text-colorbgbutton my-3">
                   Digitalize Your Health
                 </h1>
               </div>
               <div className="md:text-md text-sm font-serif">
-                <p>
+                <p className="pr-20 md:pr-[20rem]">
                   Elixir is a powerful tool designed to help educational
                   institutions manage the health records of their students,
                   employees, and residents.
                 </p>
               </div>
 
-
               <div className="mt-4 py-6">
 
+
                 <ButtonPurple onClick={handleclick}>Book Appointment</ButtonPurple>
+            
               </div>
             </div>
           </div>
@@ -82,13 +85,13 @@ const Landing = () => {
         </div>
       </section>
 
-      <section id="/services">
+      <section id="services">
         <div className="flex flex-col items-center p-4">
           <div className="py-10 items-center text-center">
             <h2 className="text-3xl text-colorbgbutton font-bold p-4">
               OUR SERVICES
             </h2>
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-slate-600 font-serif px-[6rem] md:px-[11rem]">
               Simplify patient management, streamline appointments, and optimize
               prescription processes. Enhance efficiency, accuracy, and patient
               care with our comprehensive software. Experience seamless
@@ -108,15 +111,15 @@ const Landing = () => {
         </div>
       </section>
 
-      <section id="/contact">
-        <div className="bg-colorcontact">
+      <section id="contact">
+        <div className='bg-colorbghero'>
           <h2 className="text-3xl text-colorbgbutton text-center font-bold p-8">
             CONTACT US
           </h2>
 
           <div className="flex items-center justify-cent p-4">
             <div>
-              <div className="font-bold text-slate-600 px-8 pr-[5rem]">
+              <div className="font-bold text-slate-600 px-8 md:pr-[30rem]">
                 <p>
                   ABV-Indian Institute of Information Technology and Management
                   Gwalior (ABV-IIITM), Morena Link Road, Gwalior, Madhya
@@ -128,8 +131,12 @@ const Landing = () => {
                 <p>website@iiitm.ac.in</p>
               </div>
             </div>
-            <div className="mr-10 p-2">
-              <img className='md:h-[15rem] md:w-[15rem] shadow-2xl mb-8' src={iiitmLogo} alt="iiitmLogo" />
+            <div className="mr-5 p-2">
+              <img
+                className="md:h-[15rem] md:w-[15rem] shadow-2xl mb-8"
+                src={iiitmLogo}
+                alt="iiitmLogo"
+              />
             </div>
           </div>
         </div>
