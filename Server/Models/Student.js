@@ -4,7 +4,6 @@ const UserSchema = new mongoose.Schema({
   name: {
     type: String,
     required: "true"
-
   },
   userId: {
     type: String,
@@ -14,7 +13,6 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: "true"
-    
   },
  userType: {
     type: String,
@@ -28,10 +26,30 @@ const UserSchema = new mongoose.Schema({
     type:Boolean,
     required:"true"
   },
-
   date: {
     type: Date,
     default: Date.now
+  },
+  bloodGroup: {
+    type: String,
+  },
+  gender: {
+    type: String,
+    required: true
+  },
+  allergies: {
+    type: [String],
+    default: null
+  },
+  appointmentHistory: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Appointment",
+    default: null
+  },
+  prescriptionHistory: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Prescription",
+    default: null
   }
 });
 
