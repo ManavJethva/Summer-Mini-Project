@@ -2,8 +2,8 @@ import express from "express"
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
-// import appointmentroutes from './routes/appointmentroutes.js';
-// import patientroutes from './routes/patientsroutes.js';
+import appointmentroutes from './routes/appointmentroutes.js';
+import patientsroutes from './routes/patientsroutes.js';
 // import prescriptionroutes from './routes/prescriptionroutes.js';
 import authroutes from './routes/authroutes.js';
 import jwt from "jsonwebtoken";
@@ -58,8 +58,8 @@ app.use(cors(),( err,req,res,next)=>{
   const router =express.Router();
   app.use("/",router)
   app.use("/api/auth",authroutes)
-  // app.use("/api/patientRecords",patientroutes);
-  // app.use("/api/appointment",appointmentroutes);
+  app.use("/api/patientRecords",patientsroutes);
+  app.use("/api/appointment",appointmentroutes);
   // app.use("/api/prescriptions",prescriptionroutes);
 
   
