@@ -56,11 +56,11 @@ function Login() {
         
         if (response.data.userType === "admin") {
           setTimeout(() => {
-            navigate(`/PatientRecords/admin/${response.data.userID}`);
+            navigate(`/admin/${response.data.userID}`);
           }, 2000);
         } else {
           setTimeout(() => {
-            navigate(`/PatientRecords/${response.data.userID}`);
+            navigate(`/student/${response.data.userID}`);
           }, 2000); 
         }
       }
