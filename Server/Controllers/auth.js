@@ -21,6 +21,8 @@ export const register= async(req,res,next)=>{
             password:hashPassword,
             userType:req.body.userType,
             email: req.body.userId+"@iiitm.ac.in",
+            gender: req.body.gender,
+            bloodGroup: req.body.bloodGroup,
             verified:false
         })
        

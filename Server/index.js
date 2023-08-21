@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import appointmentroutes from './routes/appointmentroutes.js';
 import patientsroutes from './routes/patientsroutes.js';
-// import prescriptionroutes from './routes/prescriptionroutes.js';
+import prescriptionroutes from './routes/prescriptionroutes.js';
 import authroutes from './routes/authroutes.js';
 import jwt from "jsonwebtoken";
 
@@ -39,28 +39,28 @@ app.use(cors(),( err,req,res,next)=>{
   })
   app.use(express.json())
 
-  export const authMiddleware = (req, res, next) => {
-    const token = req.headers.authorization;
+  // export const authMiddleware = (req, res, next) => {
+  //   const token = req.headers.authorization;
   
-    if (!token) {
-      return res.status(401).json({ error: "Unauthorized" });
-    }
+  //   if (!token) {
+  //     return res.status(401).json({ error: "Unauthorized" });
+  //   }
   
-    try {
-      const decoded = jwt.verify(token, JWT_SECRET);
-      req.user = decoded; // Attach the decoded token to the request object
-      next();
-    } catch (err) {
-      return res.status(401).json({ error: "Invalid token" });
-    }
-  };
+  //   try {
+  //     const decoded = jwt.verify(token, JWT_SECRET);
+  //     req.user = decoded; // Attach the decoded token to the request object
+  //     next();
+  //   } catch (err) {
+  //     return res.status(401).json({ error: "Invalid token" });
+  //   }
+  // };
 
   const router =express.Router();
   app.use("/",router)
   app.use("/api/auth",authroutes)
   app.use("/api/patientRecords",patientsroutes);
   app.use("/api/appointment",appointmentroutes);
-  // app.use("/api/prescriptions",prescriptionroutes);
+  app.use("/api/prescriptions",prescriptionroutes);
 
   
 
