@@ -37,7 +37,7 @@ function Appointment() {
                   <div className="text-center font-semibold pl-7"><h1 className="mb-3">Select Date</h1>
                   <input
                     type="date"
-                    className="md:w-[20rem] md:h-[3rem] bg-purple-300 text-center rounded-md shadow-2xl"
+                    className="md:w-[20rem] md:h-[3rem] bg-purple-300 text-center uppercase rounded-md shadow-2xl"
                     onChange={(e) => setDate(e.target.value)}
                   /></div>
                 </div>
@@ -74,7 +74,7 @@ function Appointment() {
                   <div>
                     <button
                       type="submit"
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded-md shadow-md"
+                      className="bg-[#DDA0DD] hover:bg-[#BA55D3] text-white font-bold py-2 px-8 rounded-md shadow-md"
                       onClick={handleBookAppointment}
                     >
                       Book Appointment
