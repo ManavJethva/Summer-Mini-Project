@@ -1,32 +1,24 @@
 import React, { useState } from "react";
-
+import axios from "axios"
 function PatientRecordAdmin() {
   const [searchId, setSearchId] = useState("");
   const [searchResult, setSearchResult] = useState(null);
-
-  const handleSearch = (e) => {
+  const baseUrl='http://localhost:3001'
+  const handleSearch = async (e) => {
     e.preventDefault();
     
-    console.log("Searching patient record...");
-    // Set the search result
-    setSearchResult({
-      fullName: "Roshan Jaiswal",
-      dateOfBirth: "2001-10-06",
-      idNumber: "2021BCS079",
-      contactNumber: "9508801096",
-      allergies: "NULL",
-      occupation: "STUDENT",
-      gender: "Male",
-      bloodGroup: "A+",
-      department: "CSE",
-      status: "Unmarried",
-      permanentAddress: "123, kathariya",
-      roomNumber: "281",
-      hostel: "BH1 Hostel",
-      email: "rosjaiswa9@gmail.com",
-    });
+   
+    try {
+      
+      const response = await axios.get(`${baseUrl}/api/patientRecords/profile/admin/${searchId}`);
 
-    setSearchId("");
+     
+      setSearchResult(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching patient record:", error);
+      // setSearchResult(null);
+    }
   };
 
   return (
@@ -35,14 +27,14 @@ function PatientRecordAdmin() {
         <div className="bg-cyan-100 rounded-2xl mx-auto">
           <div className="px-8 py-4">
             <form onSubmit={handleSearch}>
-              <div className="flex justify-center content-center py-2">
-                <input
-                  type="text"
-                  placeholder="Search by Student ID"
-                  value={searchId}
-                  onChange={(e) => setSearchId(e.target.value)}
-                  className="p-2 m-2 rounded-md shadow-md"
-                />
+            <div className="flex justify-center content-center py-2">
+              <input
+              type="text"
+              placeholder="Search by Student ID"
+              value={searchId}
+              onChange={(e) => setSearchId(e.target.value)}
+              className="p-2 m-2 rounded-md shadow-md"
+              />
                 <button type="submit" className="bg-cyan-500 py-2 px-4 rounded-md shadow-lg">
                   Search
                 </button>
@@ -53,7 +45,7 @@ function PatientRecordAdmin() {
                 <div className="flex flex-col md:flex-row justify-between content-center py-2 md:px-5">
                   <div>
                     <p className="text-center m-2 font-extrabold">
-                      Full Name: {searchResult.fullName}
+                      Full Name: {searchResult.name}
                     </p>
                     <p className="text-center m-2 font-extrabold">
                       Student ID: {searchId}
@@ -65,9 +57,9 @@ function PatientRecordAdmin() {
                 </div>
                 <div className="bg-slate-300">
                   <ul className="mt-2">
-                    <li className="p-2 px-10">
+                    {/* <li className="p-2 px-10">
                       ID Number: {searchResult.idNumber}
-                    </li>
+                    </li> */}
                     <li className="p-2 px-10">
                       Contact Number: {searchResult.contactNumber}
                     </li>

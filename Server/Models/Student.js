@@ -32,13 +32,48 @@ const UserSchema = new mongoose.Schema({
   },
   bloodGroup: {
     type: String,
+    default: null
   },
   gender: {
     type: String,
+    default: null
     // required: true
   },
   allergies: {
-    type: [String],
+    type: String,
+    default: null
+  },
+ 
+  dateOfBirth: {
+    type: Date,
+    default: null
+  },
+  contactNumber: {
+    type: String,
+    default: null
+  },
+  occupation: {
+    type: String,
+    default: null
+  },
+  department: {
+    type: String,
+    default: null
+  },
+  status: {
+    type: String,
+    default: null
+  },
+  permanentAddress: {
+    type: String,
+    default: null
+  },
+  roomNumber: {
+    type: String,
+    default: null
+  },
+  hostel: {
+    type: String,
     default: null
   },
   appointmentHistory: {
@@ -50,7 +85,7 @@ const UserSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Prescription",
     default: null
-  }
+  },
 });
 
 export default mongoose.model("Student",UserSchema)

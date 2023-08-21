@@ -1,6 +1,9 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 function PatientRecord() {
+  const { id: userId } = useParams();
+  const [userData, setUserData] = useState(null);
   const [fullName, setFullName] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [idNumber, setIdNumber] = useState("");
@@ -16,7 +19,8 @@ function PatientRecord() {
   const [hostel, setHostel] = useState("");
   const [email, setEmail] = useState("");
   const [isEditing, setIsEditing] = useState(false);
-
+  const baseUrl='http://localhost:3001'
+  
   const handleFullNameChange = (event) => {
     setFullName(event.target.value);
   };
@@ -73,38 +77,97 @@ function PatientRecord() {
     setEmail(event.target.value);
   };
 
-  const handleSave = (event) => {
+  useEffect(() => {
+    // Fetch user data when the component mounts
+    const fetchUserData = async () => {
+      try {
+        // Replace with actual API endpoint for fetching user data
+        setIsEditing(true);
+        const response = await axios.get(`${baseUrl}/api/patientRecords/profile/${userId}`);
+        setUserData(response.data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  const updateProfile = async (updatedData) => {
+    try {
+      // Replace with actual API endpoint for updating user profile
+      const response = await axios.put(`${baseUrl}/api/patientRecords/update/${userId}`, updatedData);
+
+      if (response.ok) {
+        console.log("Profile updated successfully");
+        // Optionally, you can update the user data after successful update
+        setUserData(updatedData);
+        }
+       //else {
+      //   console.error("Failed to update profile");
+      // }
+    } catch (error) {
+      console.error("Error updating profile:", error);
+    }
+  };
+
+  useEffect(() => {
+    // Populate form fields with user data if available
+    if (userData) {
+      setFullName(userData.name || "");
+      const formattedDateOfBirth = new Date(userData.dateOfBirth).toISOString().slice(0, 10);
+      setDateOfBirth(formattedDateOfBirth || "");
+      setIdNumber(userData.userId || "");
+      setContactNumber(userData.contactNumber || "");
+      setAllergies(userData.allergies || "");
+      setOccupation(userData.occupation || "");
+      setGender(userData.gender || "");
+      setBloodGroup(userData.bloodGroup || "");
+      setDepartment(userData.department || "");
+      setStatus(userData.status || "");
+      setPermanentAddress(userData.permanentAddress || "");
+      setRoomNumber(userData.roomNumber || "");
+      setHostel(userData.hostel || "");
+      setEmail(userData.email || "");
+    }
+  }, [userData]);
+
+ 
+
+  const handleSave = async (event) => {
     event.preventDefault();
-    // Perform save action here
-    console.log("Saving patient record...");
-    // Reset the form
-    resetForm();
+    // Prepare updated data
+    const formattedDateOfBirth = new Date(dateOfBirth).toISOString().slice(0, 10);
+    const updatedData = {
+      name: fullName,
+      dateOfBirth: formattedDateOfBirth,
+      userId: idNumber,
+      contactNumber,
+      allergies,
+      occupation,
+      gender,
+      bloodGroup,
+      department,
+      status,
+      permanentAddress,
+      roomNumber,
+      hostel,
+      email,
+    };
+    
+
+    // Call updateProfile function
+    await updateProfile(updatedData);
+
+    // Disable editing
+    
+    setIsEditing(false);
   };
 
   const handleEdit = () => {
-    // Enable editing mode
     setIsEditing(true);
   };
 
-  const resetForm = () => {
-    // Reset all form fields
-    setFullName("");
-    setDateOfBirth("");
-    setIdNumber("");
-    setContactNumber("");
-    setAllergies("");
-    setOccupation("");
-    setGender("");
-    setBloodGroup("");
-    setDepartment("");
-    setStatus("");
-    setPermanentAddress("");
-    setRoomNumber("");
-    setHostel("");
-    setEmail("");
-    // Disable editing mode
-    setIsEditing(false);
-  };
 
   return (
     <div className="flex flex-col items-center justify-center  bg-gradient-to-r from-purple-300 to-slate-300">
@@ -141,7 +204,7 @@ function PatientRecord() {
                 </div>
                 <div>
                   <label className="block mb-4">
-                    ID Number<span className="text-red-500">*</span>:
+                    Roll Number<span className="text-red-500">*</span>:
                     <input
                       type="text"
                       value={idNumber}
@@ -277,7 +340,7 @@ function PatientRecord() {
                 </div>
                 <div>
                   <label className="block mb-4">
-                    Permanent Address:
+                   Permanent Address:
                     <input
                       type="text"
                       value={permanentAddress}
@@ -295,7 +358,7 @@ function PatientRecord() {
                       type="number"
                       value={roomNumber}
                       onChange={handleRoomNumberChange}
-                      className="block w-full mt-1"
+                      className="block w-full mt-1 "
                       required
                       disabled={!isEditing}
                     />
@@ -341,7 +404,7 @@ function PatientRecord() {
                   <button
                     type="button"
                     className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-10 w-32 mt-3 md:mt-0 rounded"
-                    onClick={resetForm}
+                    // onClick={resetForm}
                   >
                     Cancel
                   </button>
@@ -350,7 +413,7 @@ function PatientRecord() {
                 <div className="mt-8">
                   <button
                     type="button"
-                    className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-10 rounded"
+                    className="bg-[#DDA0DD] hover:bg-[#BA55D3] text-white font-bold py-2 px-10 rounded"
                     onClick={handleEdit}
                   >
                     Edit
@@ -366,3 +429,4 @@ function PatientRecord() {
 }
 
 export default PatientRecord;
+
