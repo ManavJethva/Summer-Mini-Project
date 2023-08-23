@@ -24,7 +24,7 @@ export const currentPrescription = async (req, res) => {
 }
 
 export const allPrescriptions = async (req, res) => {
-    const id = req.params.id
+    const id = req.params.searchId
     await Prescription.find({ patient: id })
         .exec()
         .then((prescription) => {
@@ -39,24 +39,25 @@ export const allPrescriptions = async (req, res) => {
 }
 
 export const newPrescription = async (req, res) => {
-    const { patient, startDate, endDate, medicine, comments } = req.body
+    const { patient, Date, medicine, Disease} = req.body
     const { userType } = req.user
     
-    const parsedStartDate = moment(startDate, 'YYYY-MM-DD').toDate()
-    const parsedEndDate = moment(endDate, 'YYYY-MM-DD').toDate()
+    // const parsedStartDate = moment(startDate, 'YYYY-MM-DD').toDate()
+    // const parsedEndDate = moment(endDate, 'YYYY-MM-DD').toDate()
 
     if (userType === "admin") {
         try {
             const prescription = new Prescription({
                 patient,
-                startDate: parsedStartDate,
-                endDate: parsedEndDate,
+                Date,
                 medicine,
-                comments
+                Disease
             })
 
             const savedPrescription = await prescription.save()
-            await Student.findByIdAndUpdate(patient,
+            const userId=patient;
+            const filter = { userId };
+            await Student.findOneAndUpdate(filter,
                 { $push: { prescriptionHistory: savedPrescription }
             })
             
@@ -65,7 +66,8 @@ export const newPrescription = async (req, res) => {
             console.log(error)
             res.status(500).json({ error: "Failed to create prescription" })
         }
-    } else {
+     } 
+    else {
         res.status(401).json({ error: "Unauthorized" })
     }
 }
@@ -113,4 +115,24 @@ export const delPrescription = async (req, res) => {
     } else {
         res.status(401).json({ error: "Unauthorized" })
     }
+}
+
+export const StudentPrescription= async(req,res)=>{
+    try {
+        const studentId = req.params.id;
+        // Find the student by ID
+        const student = await Student.findById(studentId).populate('prescriptionHistory');
+    
+        if (!student) {
+          return res.status(404).json({ message: 'Student not found' });
+        }
+    
+        const prescriptionHistory = student.prescriptionHistory;
+        res.json(prescriptionHistory);
+        
+      } catch (error) {
+        console.error('Error fetching prescription history:', error);
+        res.status(500).json({ message: 'Server error' });
+      }
+    
 }

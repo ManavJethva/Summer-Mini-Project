@@ -1,6 +1,7 @@
 // import Student from "../Models/Student.js"
 import Appointment from "../Models/Appointment.js"
-
+import Student from "../Models/Student.js";
+import { appointmentMail } from "../utils/mail.js";
 // appointment slots - date and time
 export const timeSlots = (req, res) => {
     const { date } = req.body;
@@ -54,11 +55,16 @@ export const bookAppt = (req, res) => {
         });
 
         appointment.save()
-            .then((result) => {
+            .then(async(result) => {
             const { slots } = req.app.locals;
-            const updatedSlots = slots.filter((slot) => slot !== time);
+            const updatedSlots = req.app.locals.slots ? req.app.locals.slots.filter((slot) => slot !== time) : [];
             req.app.locals.slots = updatedSlots;
 
+
+            const email="manavj764@gmail.com"
+            const student= await Student.findOne({ userId: patient});
+            const name=student.name;
+            await appointmentMail(email,name,date,time,patient);
             res.status(201).json(result);
             })
             .catch((error) => {

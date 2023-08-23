@@ -1,31 +1,19 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 function SearchHistory() {
   const [searchId, setSearchId] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [prescriptions] = useState([
-    {
-      id: 1,
-      disease: "Disease 1",
-      date: "June 21, 2023",
-      medicines: ["Medicine 1", "Medicine 2", "Medicine 3"],
-      studentId: "123456",
-    },
-    {
-      id: 2,
-      disease: "Disease 2",
-      date: "June 22, 2023",
-      medicines: ["Medicine 4", "Medicine 5", "Medicine 6"],
-      studentId: "789012",
-    },
-  ]);
+  const baseurl="http://localhost:3001";
 
-  const handleSearch = (e) => {
+  const handleSearch = async(e) => {
     e.preventDefault();
-    const results = prescriptions.filter(
-      (prescription) => prescription.studentId === searchId
-    );
-    setSearchResults(results);
+    try {
+      const response = await axios.get(`${baseurl}/api/prescriptions/all/${searchId}`);
+      const prescriptions = response.data;
+      setSearchResults(prescriptions);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -49,25 +37,25 @@ function SearchHistory() {
             </form>
             {searchResults.map((prescription) => (
               <div
-                key={prescription.id}
+                key={prescription._id}
                 className="flex flex-col my-20 bg-purple-300 rounded-md shadow-md"
               >
                 <div className="flex justify-between content-center py-2 md:px-5">
                   <div>
                     <p className="text-center m-2 font-extrabold">
-                      {prescription.disease}
+                      {prescription.Disease}
                     </p>
                     <p className="text-center m-2 font-extrabold">
-                      Student ID: {prescription.studentId}
+                      Student ID: {prescription.patient}
                     </p>
                   </div>
                   <div className="m-2 font-sans font-semibold">
-                    <p>{prescription.date}</p>
+                    <p>{prescription.Date}</p>
                   </div>
                 </div>
                 <div className="bg-slate-300">
                   <ul className="mt-2">
-                    {prescription.medicines.map((medicine, index) => (
+                    {prescription.medicine.map((medicine, index) => (
                       <li className="p-2 px-10" key={index}>
                         {medicine}
                       </li>

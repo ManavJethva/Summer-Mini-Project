@@ -10,18 +10,18 @@ const appointmentSchema = new mongoose.Schema({
         required: true
     },
     patient: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         ref: "Student",
         required: true
     },
-    dept: {
-        type: String,
-        required: true
-    },
-    complaint: {
-        type: String,
-        required: true
-    }
+    // dept: {
+    //     type: String,
+    //     required: true
+    // },
+    // complaint: {
+    //     type: String,
+    //     required: true
+    // }
 })
 
 export default mongoose.model("Appointment", appointmentSchema)

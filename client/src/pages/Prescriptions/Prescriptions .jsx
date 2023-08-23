@@ -1,66 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from 'react-router-dom';
+ function Prescriptions() {
+  const { id: Id } = useParams();
+  const baseurl = "http://localhost:3001";
+  const [searchResults, setSearchResults] = useState([]);
 
-function Prescriptions() {
-  const [prescriptions, setPrescriptions] = useState([
-    {
-      id: 1,
-      disease: "Disease 1",
-      date: "June 21, 2023",
-      medicines: ["Medicine 1", "Medicine 2", "Medicine 3"],
-    },
-    {
-      id: 2,
-      disease: "Disease 2",
-      date: "June 22, 2023",
-      medicines: ["Medicine 4", "Medicine 5", "Medicine 6"],
-    },
-    {
-      id: 2,
-      disease: "Disease 2",
-      date: "June 22, 2023",
-      medicines: ["Medicine 4", "Medicine 5", "Medicine 6"],
-    },
-    {
-      id: 2,
-      disease: "Disease 2",
-      date: "June 22, 2023",
-      medicines: ["Medicine 4", "Medicine 5", "Medicine 6"],
-    },
-    {
-      id: 2,
-      disease: "Disease 2",
-      date: "June 22, 2023",
-      medicines: ["Medicine ", "Medicine ", "Medicine ","dfsdfsdfd","sdfsdfsdfdsf"],
-    },
-    
-    // Add more prescriptions as needed
-  ]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${baseurl}/api/prescriptions/alll/${Id}`);
+        const prescriptions = response.data;
+        setSearchResults(prescriptions);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
+    fetchData();
+  }, [Id]);
+ 
   return (
-    <div className="flex flex-col items-center justify-center  bg-gradient-to-r from-purple-300 to-slate-300">
-      <div className="w-[100%] p-10 px-20">
-        <div className="bg-cyan-100 rounded-2xl mx-auto ">
+    <div className="flex flex-col items-center justify-center bg-gradient-to-r from-purple-300 to-slate-300">
+      <div className="w-full p-10">
+        <div className="bg-cyan-100 rounded-2xl mx-auto">
           <div className="px-8 py-4">
-            {prescriptions.map((prescription) => (
+            {searchResults.map((prescription) => (
               <div
-                key={prescription.id}
-                className="flex flex-col my-20 bg-purple-300 rounded-md shadow-md"
+                key={prescription.patient}
+                className="my-6 bg-purple-300 rounded-md shadow-md p-4"
               >
-                <div className="flex justify-between content-center py-2 md:px-5">
-                  <div>
-                    <p className="text-center m-2 font-extrabold">
-                      {prescription.disease}
-                    </p>
-                  </div>
-                  <div className=" m-2 font-sans font-semibold ">
-                    <p>{prescription.date}</p>
-                  </div>
+                <div className="flex justify-between items-center py-2">
+                  <p className="text-xl font-semibold">{prescription.Disease}</p>
+                  <p className="text-gray-600">{prescription.Date}</p>
                 </div>
-
-                <div className='bg-slate-300'>
-                  <ul className="mt-2">
-                    {prescription.medicines.map((medicine, index) => (
-                      <li className="p-2 px-10" key={index}>
+  
+                <div className="bg-slate-300 p-4 mt-2">
+                  <ul>
+                    {prescription.medicine.map((medicine, index) => (
+                      <li key={index} className="p-2 px-4">
                         {medicine}
                       </li>
                     ))}

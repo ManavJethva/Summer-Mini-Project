@@ -79,12 +79,12 @@ const UserSchema = new mongoose.Schema({
   appointmentHistory: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: "Appointment",
-    default: null
+    default: []
   },
   prescriptionHistory: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: "Prescription",
-    default: null
+    default: []
   },
 });
 

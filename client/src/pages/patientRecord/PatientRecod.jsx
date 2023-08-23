@@ -170,11 +170,11 @@ function PatientRecord() {
 
 
   return (
-    <div className="flex flex-col items-center justify-center  bg-gradient-to-r from-purple-300 to-slate-300">
-      <div className="w-[100%] p-10 px-20">
-        <div className="bg-cyan-100  rounded-2xl mx-auto ">
-          <div className="pr-10 py-10">
-            <form className="pl-20">
+    <div className="flex flex-col items-center justify-center bg-gradient-to-r from-purple-300 to-slate-300">
+    <div className="w-[100%] p-10 px-20">
+      <div className="bg-cyan-100 rounded-2xl mx-auto">
+        <div className="pr-10 py-10">
+          <form className="pl-20">
               <div className="md:grid md:grid-cols-2 gap-4">
                 <div>
                   <label className="block mb-4">
@@ -183,7 +183,9 @@ function PatientRecord() {
                       type="text"
                       value={fullName}
                       onChange={handleFullNameChange}
-                      className="block w-full mt-1"
+                      className={`block w-full mt-1 p-2 rounded ${
+                        !isEditing ? 'bg-gray-100' : ''
+                      }`}
                       required
                       disabled={!isEditing}
                     />
@@ -196,7 +198,9 @@ function PatientRecord() {
                       type="date"
                       value={dateOfBirth}
                       onChange={handleDateOfBirthChange}
-                      className="block w-full mt-1"
+                      className={`block w-full mt-1 p-2 rounded ${
+                        !isEditing ? 'bg-gray-100' : ''
+                      }`}
                       required
                       disabled={!isEditing}
                     />
@@ -209,7 +213,9 @@ function PatientRecord() {
                       type="text"
                       value={idNumber}
                       onChange={handleIdNumberChange}
-                      className="block w-full mt-1"
+                      className={`block w-full mt-1 p-2 rounded ${
+                        !isEditing ? 'bg-gray-100' : ''
+                      }`}
                       required
                       disabled={!isEditing}
                     />
@@ -222,7 +228,9 @@ function PatientRecord() {
                       type="number"
                       value={contactNumber}
                       onChange={handleContactNumberChange}
-                      className="block w-full mt-1"
+                      className={`block w-full mt-1 p-2 rounded ${
+                        !isEditing ? 'bg-gray-100' : ''
+                      }`}
                       required
                       disabled={!isEditing}
                     />
@@ -235,7 +243,9 @@ function PatientRecord() {
                       type="text"
                       value={allergies}
                       onChange={handleAllergiesChange}
-                      className="block w-full mt-1"
+                      className={`block w-full mt-1 p-2 rounded ${
+                        !isEditing ? 'bg-gray-100' : ''
+                      }`}
                       required
                       disabled={!isEditing}
                     />
@@ -247,7 +257,9 @@ function PatientRecord() {
                     <select
                       value={occupation}
                       onChange={handleOccupationChange}
-                      className="block w-full mt-1"
+                      className={`block w-full mt-1 p-2 rounded ${
+                        !isEditing ? 'bg-gray-100' : ''
+                      }`}
                       required
                       disabled={!isEditing}
                     >
@@ -265,7 +277,9 @@ function PatientRecord() {
                     <select
                       value={gender}
                       onChange={handleGenderChange}
-                      className="block w-full mt-1"
+                      className={`block w-full mt-1 p-2 rounded ${
+                        !isEditing ? 'bg-gray-100' : ''
+                      }`}
                       required
                       disabled={!isEditing}
                     >
@@ -281,7 +295,9 @@ function PatientRecord() {
                     <select
                       value={bloodGroup}
                       onChange={handleBloodGroupChange}
-                      className="block w-full mt-1"
+                      className={`block w-full mt-1 p-2 rounded ${
+                        !isEditing ? 'bg-gray-100' : ''
+                      }`}
                       required
                       disabled={!isEditing}
                     >
@@ -304,7 +320,9 @@ function PatientRecord() {
                       type="text"
                       value={department}
                       onChange={handleDepartmentChange}
-                      className="block w-full mt-1"
+                      className={`block w-full mt-1 p-2 rounded ${
+                        !isEditing ? 'bg-gray-100' : ''
+                      }`}
                       required
                       disabled={!isEditing}
                     >
@@ -328,7 +346,9 @@ function PatientRecord() {
                       type="text"
                       value={status}
                       onChange={handleStatusChange}
-                      className="block w-full mt-1"
+                      className={`block w-full mt-1 p-2 rounded ${
+                        !isEditing ? 'bg-gray-100' : ''
+                      }`}
                       required
                       disabled={!isEditing}
                     >
@@ -345,7 +365,9 @@ function PatientRecord() {
                       type="text"
                       value={permanentAddress}
                       onChange={handlePermanentAddressChange}
-                      className="block w-full mt-1"
+                      className={`block w-full mt-1 p-2 rounded ${
+                        !isEditing ? 'bg-gray-100' : ''
+                      }`}
                       required
                       disabled={!isEditing}
                     />
@@ -358,7 +380,9 @@ function PatientRecord() {
                       type="number"
                       value={roomNumber}
                       onChange={handleRoomNumberChange}
-                      className="block w-full mt-1 "
+                      className={`block w-full mt-1 p-2 rounded ${
+                        !isEditing ? 'bg-gray-100' : ''
+                      }`}
                       required
                       disabled={!isEditing}
                     />
@@ -371,7 +395,9 @@ function PatientRecord() {
                       type="text"
                       value={hostel}
                       onChange={handleHostelChange}
-                      className="block w-full mt-1"
+                      className={`block w-full mt-1 p-2 rounded ${
+                        !isEditing ? 'bg-gray-100' : ''
+                      }`}
                       required
                       disabled={!isEditing}
                     />
@@ -384,7 +410,9 @@ function PatientRecord() {
                       type="email"
                       value={email}
                       onChange={handleEmailChange}
-                      className="block w-full mt-1"
+                      className={`block w-full mt-1 p-2 rounded ${
+                        !isEditing ? 'bg-gray-100' : ''
+                      }`}
                       required
                       disabled={!isEditing}
                     />

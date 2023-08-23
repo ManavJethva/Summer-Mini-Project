@@ -2,23 +2,18 @@ import mongoose from "mongoose"
 
 const prescriptionSchema = new mongoose.Schema({
     patient: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         ref: "Student",
         required: true
     },
-    startDate: {
-        type: Date,
-        default: Date.now,
-        required: true
-    },
-    endDate: {
+    Date: {
         type: Date,
         required: true
     },
     medicine: {
         type: [String],
     },
-    comments: {
+    Disease: {
         type: String,
         default: null
     }
