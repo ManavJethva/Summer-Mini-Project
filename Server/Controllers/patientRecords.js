@@ -58,7 +58,7 @@ export const deleteProfile = async (req, res) => {
 
 export const AdminviewProfile = async (req, res) => {
     const rollNo = req.params.searchId; // Assuming the parameter name is rollNo
-    console.log(rollNo);
+    
     await Student.findOne({ userId: rollNo}) 
         .then((student) => {
             if (!student) {
