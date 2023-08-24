@@ -105,7 +105,7 @@ function Register() {
             <h2 className="text-xl text-center">Registration</h2>
           </div>
 
-          <div className="flex justify-center pr-5">
+          <div className="flex justify-center items-center pr-5">
             <form onSubmit={handleFormSubmit} className="max-w-md pl-20">
               <label className="block mb-4">
                 Name:
@@ -137,7 +137,7 @@ function Register() {
               </label>
               <button
                 type="submit"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-10 ml-[3.5rem] rounded"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-10 rounded "
               >
                 Register
               </button>

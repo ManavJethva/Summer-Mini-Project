@@ -26,21 +26,30 @@ function Appointment() {
       time
     }
    
-    const res= await axios.post(`${baseUrl}/api/appointment/book`,appointment);
-    if(res.status===201){
-      toast.success("Appointment Booked Successfully",{
-        position:"top-center"
-      });
-    } 
-    else if(res.status===400){
-      toast.error("Selected Slot Already Booked",{
-        position:"top-center"
-      });
+    try {
+      const res = await axios.post(`${baseUrl}/api/appointment/book`, appointment);
+    
+      if (res.status === 201) {
+        toast.success("Appointment Booked Successfully", {
+          position: "top-center",
+        });
+      } else {
+        toast.error("An error occurred");
+      }
+    
+      resetBookAppointment();
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        toast.error("Selected Slot Already Booked", {
+          position: "top-center",
+        });
+      } else {
+        toast.error("An error occurred");
+      }
+    
+      console.error(error);
     }
-    else{
-      toast.error(console.error())
-    }
-    resetBookAppointment();
+    
   };
 
   const resetBookAppointment = () => {
