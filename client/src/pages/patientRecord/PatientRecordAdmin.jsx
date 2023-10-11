@@ -3,7 +3,7 @@ import axios from "axios"
 function PatientRecordAdmin() {
   const [searchId, setSearchId] = useState("");
   const [searchResult, setSearchResult] = useState(null);
-  const baseUrl='http://localhost:3001'
+  const baseUrl='https://elixir-z7dn.onrender.com'
   const handleSearch = async (e) => {
     e.preventDefault();
     

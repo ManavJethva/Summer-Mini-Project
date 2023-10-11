@@ -8,7 +8,7 @@ function PrescriptionsAdmin() {
   const [medicine, setMedicine] = useState("");
   const [patient, setpatient] = useState("");
   const [prescriptions, setPrescriptions] = useState([]);
-  const baseUrl='http://localhost:3001';
+  const baseUrl='https://elixir-z7dn.onrender.com';
   const handleSubmit = async(e) => {
     e.preventDefault();
     const newPrescription = {

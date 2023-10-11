@@ -8,7 +8,7 @@ function Appointment() {
   const [date, setDate] = useState("");
   const [patient, setpatient] = useState("");
   const [time, settime] = useState("");
-  const baseUrl="http://localhost:3001";
+  const baseUrl="https://elixir-z7dn.onrender.com";
   const handlepatient = (event) => {
     setpatient(event.target.value);
   };

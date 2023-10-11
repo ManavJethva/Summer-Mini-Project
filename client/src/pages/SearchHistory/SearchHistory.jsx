@@ -3,7 +3,7 @@ import axios from "axios";
 function SearchHistory() {
   const [searchId, setSearchId] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const baseurl="http://localhost:3001";
+  const baseurl="https://elixir-z7dn.onrender.com";
 
   const handleSearch = async(e) => {
     e.preventDefault();

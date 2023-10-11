@@ -58,7 +58,7 @@ function Register() {
     setuserId("");
     setPassword("");
 
-    const url = 'http://localhost:3001/api/auth/register';
+    const url = 'https://elixir-z7dn.onrender.com/api/auth/register';
 
     axios
       .post(url, data)

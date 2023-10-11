@@ -19,7 +19,7 @@ function PatientRecord() {
   const [hostel, setHostel] = useState("");
   const [email, setEmail] = useState("");
   const [isEditing, setIsEditing] = useState(false);
-  const baseUrl='http://localhost:3001'
+  const baseUrl='https://elixir-z7dn.onrender.com'
   
   const handleFullNameChange = (event) => {
     setFullName(event.target.value);

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams } from 'react-router-dom';
  function Prescriptions() {
   const { id: Id } = useParams();
-  const baseurl = "http://localhost:3001";
+  const baseurl = "https://elixir-z7dn.onrender.com";
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {

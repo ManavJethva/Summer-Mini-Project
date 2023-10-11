@@ -33,7 +33,7 @@ function Login() {
   
     try {
       // Make API call using Axios
-      const response = await axios.post("http://localhost:3001/api/auth/login", {
+      const response = await axios.post("https://elixir-z7dn.onrender.com/api/auth/login", {
         userId: userId,
         password: password,
         userType: userType,
